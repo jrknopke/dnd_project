@@ -11,9 +11,9 @@ class GetSpell
         url = "https://www.dnd5eapi.co/api/spells/#{@spell_name}"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
-        @response_hash = JSON.parse(response.body)
+        response_hash = JSON.parse(response.body)
     end
    
 end
 
-binding.pry
+# binding.pry

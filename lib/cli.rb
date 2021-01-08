@@ -26,11 +26,11 @@ class CLI
         puts "Name: #{@spell.name}"
         puts "Description: #{@spell.desc}"
         puts "Damage: #{@spell.damage}"
-        puts "Level: #{@spell.level}"
-        puts "Higher Level: #{@spell.higher_level}"
         puts "Range: #{@spell.range}"
         puts "Duration: #{@spell.duration}"
         puts "Casting Time: #{@spell.casting_time}"
+        puts "Level: #{@spell.level}"
+        puts "Higher Level: #{@spell.higher_level}"
         puts "School: #{@spell.school}"
     end
 
