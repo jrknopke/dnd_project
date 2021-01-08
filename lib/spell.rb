@@ -1,56 +1,29 @@
+require_relative "../config/environment"
 class Spell
-    attr_accessor 
+    attr_accessor :name, :desc, :level, :higher_level, :range, :duration, :casting_time, :school, :damage
 
-    require 'open-uri'
-    require 'net/http'
-    require 'json'
+    @@all = []
 
-    require 'pry'
-
-    def initialize(spell_name)
-        @spell_name = spell_name
-        @spell_name = @spell_name.downcase.gsub(" ", "-")
-        # url = "https://www.dnd5eapi.co/api/spells/#{spell_name}"
-        # uri = URI.parse(url)
-        # response = Net::HTTP.get_response(uri)
-        # response_hash = JSON.parse(response.body)
+    def initialize(spell_data)
+        self.name = spell_data["name"]
+        self.desc = spell_data["desc"][0]
+        self.level = spell_data["level"]
+        self.higher_level = spell_data["higher_level"]
+        self.range = spell_data["range"]
+        self.duration = spell_data["duration"]
+        self.casting_time = spell_data["casting_time"]
+        self.school = spell_data["school"]["name"]
+        self.damage = spell_data["damage"]["damage_at_slot_level"]
     end
 
-    def get
-        url = "https://www.dnd5eapi.co/api/spells/#{@spell_name}"
-        uri = URI.parse(url)
-        response = Net::HTTP.get_response(uri)
-        response_hash = JSON.parse(response.body)
-    end
+    # def get
+    #     url = "https://www.dnd5eapi.co/api/spells/#{@spell_name}"
+    #     uri = URI.parse(url)
+    #     response = Net::HTTP.get_response(uri)
+    #     @response_hash = JSON.parse(response.body)
+    #     @@all << @response_hash
+    # end
+
 end
 
-    #binding.pry
-
-class CLI
-    attr_accessor :response_hash
-
-    def initialize
-        puts "Welcome to Spell Finder."
-        enter_spell
-    end
-
-    def enter_spell
-        puts "Please enter a spell from DnD Fifth Edition:"
-        spell_name = gets.chomp
-        puts "Thanks. Gathering information about your Spell..."
-        get_info(spell_name)
-    end
-
-    def get_info(spell_name)
-        new_spell = Spell.new(spell_name)
-        @response_hash = new_spell.get
-        display_info
-    end
-
-    def display_info
-        puts "Name: #{@response_hash["name"]}"
-        puts "Description: #{@response_hash["desc"]}"
-    end
-end
-
-CLI.new
+#binding.pry
