@@ -1,17 +1,20 @@
 require_relative "../config/environment"
+require 'pry'
 class Spell
     attr_accessor :name, :desc, :level, :higher_level, :range, :duration, :casting_time, :school, :damage
 
     def initialize(spell_data)
-        self.name = spell_data["name"]
-        self.desc = spell_data["desc"][0]
-        self.range = spell_data["range"]
-        self.duration = spell_data["duration"]
-        self.casting_time = spell_data["casting_time"]
-        self.school = spell_data["school"]["name"]
-        self.damage = spell_data["damage"]["damage_at_slot_level"]
-        self.level = spell_data["level"]
-        self.higher_level = spell_data["higher_level"]
+        
+        @name = spell_data["name"]
+        @desc = spell_data["desc"][0]
+        @range = spell_data["range"]
+        @duration = spell_data["duration"]
+        @casting_time = spell_data["casting_time"]
+        @school = spell_data["school"]["name"]
+        @damage = spell_data["damage"]["damage_at_slot_level"]
+        @level = spell_data["level"]
+        @higher_level = spell_data["higher_level"]
+        # binding.pry
     end
 
     # def get

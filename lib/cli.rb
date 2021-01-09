@@ -1,5 +1,5 @@
 require_relative "../config/environment"
-
+require 'pry'
 class CLI
     attr_accessor :response_hash
 
@@ -36,21 +36,34 @@ class CLI
         puts "Please enter the level you would like to see spells for (as a number):"
         level = gets.chomp
         puts "Thanks. Gathering list of spells for level #{level}..."
-        get_all_spells_at_level(level)
+        get_spells_at_level(level)
+    end
+
+    def find_by_school
+        puts "Please enter the School of Magic you would like to see spells for:"
+        school = gets.chomp
+        puts "Thanks. Gathering list of spells in the school of #{school}"
+        get_spells_for_school
     end
 
     def get_spell(spell_name)
         new_spell = GetSpell.new(spell_name)
-        response_hash = new_spell.get_spell
+        response_hash = new_spell.get_spell_by_name
+        # binding.pry
         @spell = Spell.new(response_hash)
         display_spell_info
     end
 
-    def get_spells_by_level(Level)
+    def get_spells_at_level(level)
         list = GetSpell.new(level)
         response_hash = list.get_spells_by_level
-        
+        @list = LevelList.new(response_hash)
+        # binding.pry
+        display_list_info
+    end
 
+    def get_spells_for_school(school)
+        
     end
 
     def display_spell_info
@@ -63,6 +76,18 @@ class CLI
         puts "Level: #{@spell.level}"
         puts "Higher Level: #{@spell.higher_level}"
         puts "School: #{@spell.school}"
+    end
+
+    def display_list_info
+        puts "There are #{@list.count} spells for this level."
+        @list.names.each do |spell|
+            puts "#{spell}"
+            #using @list
+        end
+    end
+
+    def display_class_list
+
     end
 
 end
