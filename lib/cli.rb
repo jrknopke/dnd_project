@@ -1,4 +1,3 @@
-require_relative "../config/environment"
 require 'pry'
 class CLI
     attr_accessor :response_hash
@@ -63,7 +62,7 @@ class CLI
     end
 
     def get_spells_for_school(school)
-        
+
     end
 
     def display_spell_info

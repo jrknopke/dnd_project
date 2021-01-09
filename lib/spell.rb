@@ -1,4 +1,3 @@
-require_relative "../config/environment"
 require 'pry'
 class Spell
     attr_accessor :name, :desc, :level, :higher_level, :range, :duration, :casting_time, :school, :damage
