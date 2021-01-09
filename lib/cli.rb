@@ -42,7 +42,7 @@ class CLI
         puts "Please enter the School of Magic you would like to see spells for:"
         school = gets.chomp
         puts "Thanks. Gathering list of spells in the school of #{school}"
-        get_spells_for_school
+        get_spells_for_school(school)
     end
 
     def get_spell(spell_name)
@@ -62,7 +62,12 @@ class CLI
     end
 
     def get_spells_for_school(school)
-
+        school = GetSpell.new(school)
+        response_hash = school.get_spells_by_school
+        # binding.pry
+        @school = School.new(response_hash)
+        # binding.pry
+        display_class_info
     end
 
     def display_spell_info
@@ -81,12 +86,14 @@ class CLI
         puts "There are #{@list.count} spells for this level."
         @list.names.each do |spell|
             puts "#{spell}"
-            #using @list
         end
     end
 
-    def display_class_list
-
+    def display_class_info
+        puts "There are #{@school.count} spells in this School of Magic."
+        @school.names.each do |spell|
+            puts "#{spell}"
+        end
     end
 
 end

@@ -15,15 +15,7 @@ class Spell
         @higher_level = spell_data["higher_level"]
         # binding.pry
     end
-
-    # def get
-    #     url = "https://www.dnd5eapi.co/api/spells/#{@spell_name}"
-    #     uri = URI.parse(url)
-    #     response = Net::HTTP.get_response(uri)
-    #     @response_hash = JSON.parse(response.body)
-    #     @@all << @response_hash
-    # end
-
+    
 end
 
 #binding.pry
