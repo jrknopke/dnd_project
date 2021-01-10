@@ -1,8 +1,6 @@
 # DndProject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dnd_project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is my Phase 1 project for Flatiron Online Software Engineering Program. It allows the user to search for Spells from Dungeons and Dragons 5e. The user can search for spells by name, level, or school of magic. 
 
 ## Installation
 
@@ -22,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run program type 'ruby bin/run'
+Search for spell by spell name, level, or school of magic.
 
 ## Development
 
