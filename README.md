@@ -36,3 +36,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Dependencies
+
+Thanks to this Dnd API: "https://www.dnd5eapi.co/api/"
+
+All info provided by Wizards of the Coast LLC
