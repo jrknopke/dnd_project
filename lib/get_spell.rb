@@ -31,5 +31,3 @@ class GetSpell
     end
    
 end
-
-# binding.pry
