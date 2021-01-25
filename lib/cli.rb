@@ -1,4 +1,3 @@
-require 'pry'
 class CLI
     attr_accessor :response_hash
 
@@ -49,7 +48,6 @@ class CLI
     def get_spell(spell_name)
         new_spell = GetSpell.new(spell_name)
         response_hash = new_spell.get_spell_by_name
-        # binding.pry
         if response_hash.include?("error")
             puts "Spell not found."
             find_by_name
@@ -77,6 +75,12 @@ class CLI
         puts " "
         puts "Description: #{@spell.desc}"
         puts " "
+        puts "Classes:"
+        @spell.classes.each do |c|
+            puts c["name"]
+        end
+
+        puts " "
         puts "Damage:"
         
         if @spell.damage != "N/A"
@@ -94,15 +98,8 @@ class CLI
         puts "Level: #{@spell.level}"
         puts "School: #{@spell.school}"
         puts " "
-        puts "Would you like to search again?"
-        answer= gets.chomp
-        answer= answer.downcase
-        if answer == 'yes'
-            CLI.new
-        elsif answer == 'no'
-            exit
-        end
 
+        search_again?
     end
 
     def display_list_info
@@ -110,14 +107,7 @@ class CLI
         @list.names.each do |spell|
             puts "#{spell}"
         end
-        puts "Would you like to search again?"
-        answer= gets.chomp
-        answer= answer.downcase
-        if answer == 'yes'
-            CLI.new
-        elsif answer == 'no'
-            exit
-        end
+        search_again?
     end
 
     def display_class_info
@@ -125,6 +115,10 @@ class CLI
         @school.names.each do |spell|
             puts "#{spell}"
         end
+        search_again?
+    end
+
+    def search_again?
         puts "Would you like to search again?"
         answer= gets.chomp
         answer= answer.downcase

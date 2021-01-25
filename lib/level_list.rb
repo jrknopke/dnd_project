@@ -11,7 +11,6 @@ class LevelList
             @@all << "#{i}. #{name}"
         end
         @names = @@all
-        # binding.pry
     end
 
 end

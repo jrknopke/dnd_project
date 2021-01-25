@@ -3,7 +3,6 @@ class GetSpell
 
     def initialize(input)
         @input = input
-        # self.get
     end
 
     def get_spell_by_name

@@ -1,9 +1,10 @@
-require 'pry'
 class Spell
-    attr_accessor :name, :desc, :level, :range, :duration, :casting_time, :school, :damage
+    attr_accessor :name, :desc, :level, :range, :duration, :casting_time, :school, :damage, :classes
+
+    @@all = []
 
     def initialize(spell_data)
-        # binding.pry
+        
         @name = spell_data["name"]
         @desc = spell_data["desc"][0]
         @range = spell_data["range"]
@@ -16,9 +17,16 @@ class Spell
         else
             @damage = "N/A"
         end
-        
-        @level = spell_data["level"]
 
+        @level = spell_data["level"]
+        @classes = spell_data["classes"]{|c| c }
+
+        self.save
+
+    end
+
+    def save
+        @@all << self
     end
 
 end
